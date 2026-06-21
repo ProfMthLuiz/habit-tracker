@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
+// SITE
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index']);
+
+// LOGIN
+Route::get('/login', [LoginController::class, 'index']);
 
 // MVC
 // Model -> database interaction ("BANCO")

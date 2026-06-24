@@ -10,7 +10,12 @@ use App\Models\Habit;
 
 class HabitController extends Controller
 {
-    public function index() {}
+
+    public function index(): View
+    {
+        $habits = auth()->user()->habits;
+        return view('dashboard', compact('habits'));
+    }
 
     public function create(): View
     {
@@ -23,7 +28,7 @@ class HabitController extends Controller
 
         auth()->user()->habits()->create($validated);
 
-        return redirect()->route('site.dashboard')->with('success', 'Hábito criado com sucesso.');
+        return redirect()->route('habits.index')->with('success', 'Hábito criado com sucesso.');
     }
 
     // public function show(Habit $habit) {}
@@ -41,7 +46,7 @@ class HabitController extends Controller
 
         $habit->update($request->all());
 
-        return redirect()->route('site.dashboard')->with('success', 'Hábito atualizado com sucesso.');
+        return redirect()->route('habits.index')->with('success', 'Hábito atualizado com sucesso.');
     }
 
     public function destroy(Habit $habit)
@@ -52,6 +57,6 @@ class HabitController extends Controller
 
         $habit->delete();
 
-        return redirect()->route('site.dashboard')->with('success', 'Hábito removido com sucesso.');
+        return redirect()->route('habits.index')->with('success', 'Hábito removido com sucesso.');
     }
 }

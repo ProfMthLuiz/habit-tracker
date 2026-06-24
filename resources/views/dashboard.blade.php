@@ -31,6 +31,14 @@
                             <p>
                                 [{{ $habit->habitLogs->count() }}]
                             </p>
+                            <form action="{{ route('habit.destroy', $habit) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="bg-red-500 text-white p-1 border-2 hover:opacity-50 cursor-pointer">
+                                    <x-icons.trash />
+                                </button>
+                            </form>
                         </div>
                     </li>
                 @empty

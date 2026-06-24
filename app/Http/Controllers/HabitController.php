@@ -28,7 +28,21 @@ class HabitController extends Controller
 
     // public function show(Habit $habit) {}
 
-    // public function edit(Habit $habit) {}
+    public function edit(Habit $habit): View
+    {
+        return view('habits.edit', compact('habit'));
+    }
+
+    public function update(HabitRequest $request, Habit $habit)
+    {
+        if ($habit->user_id !== auth()->user()->id) {
+            abort(code: 403, message: 'Esse hábito não pertence a você.');
+        }
+
+        $habit->update($request->all());
+
+        return redirect()->route('site.dashboard')->with('success', 'Hábito atualizado com sucesso.');
+    }
 
     public function destroy(Habit $habit)
     {

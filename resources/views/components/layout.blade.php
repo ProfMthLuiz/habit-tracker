@@ -1,19 +1,21 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @vite('resources/css/app.css')
 
     <title>
-      {{ config('app.name') }}
+        {{ config('app.name') }}
     </title>
-  </head>
-  <body class="bg-[#FFEDD6]">
-    {{-- HEADER --}}
-    <x-header/>
-    {{ $slot }}
-    <x-footer/>
-  </body>
-</html>
+</head>
 
+<body class="bg-[#FFEDD6] min-h-screen flex flex-col justify-between">
+    {{-- HEADER --}}
+    <x-header />
+    {{ $slot }}
+    <x-footer />
+</body>
+
+</html>

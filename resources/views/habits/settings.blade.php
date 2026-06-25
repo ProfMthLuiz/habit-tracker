@@ -12,18 +12,28 @@
 
         <div>
             <h2 class="text-lg mt-8 mb-2">
-                {{ date('d/m/Y') }}
+                Configurar Hábitos
             </h2>
 
             <ul class="flex flex-col gap-2">
                 @forelse($habits as $habit)
                     <li class="habit-shadow-lg p-2 bg-[#ffdaac]">
                         <div class="flex gap-2 items-center">
-                            <input type="checkbox" class="w-5 h-5" {{ $habit->is_completed ? 'checked' : '' }} disabled>
                             <p class="font-bold text-lg">
                                 {{ $habit->name }}
                             </p>
-
+                            <a class="bg-blue-500 p-1 border-2 border-white hover:opacity-50 cursor-pointer"
+                                href="{{ route('habits.edit', $habit->id) }}">
+                                <x-icons.edit />
+                            </a>
+                            <form action="{{ route('habits.destroy', $habit) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="bg-red-500 text-white p-1 border-2 hover:opacity-50 cursor-pointer">
+                                    <x-icons.trash />
+                                </button>
+                            </form>
                         </div>
                     </li>
                 @empty

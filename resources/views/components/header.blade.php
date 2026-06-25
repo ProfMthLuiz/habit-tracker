@@ -1,6 +1,10 @@
 <header class="bg-white border-b-2 flex items-center justify-between p-5">
     {{--  LOGO --}}
-    <a href="/" class="habit-btn habit-shadow-lg bg-habit-orange px-2 py-1">HT</a>
+    <div class="flex items-center gap-2 font-bold">
+        <a href="/" class="habit-btn habit-shadow-lg bg-habit-orange px-2 py-1">HT</a>
+        <p>Habit Tracker</p>
+    </div>
+
 
     {{-- GitHub --}}
     <div>GITHUB
@@ -14,7 +18,8 @@
 
         @guest
             <div class="flex gap-2">
-                <a href="{{ route('site.login') }}" class=" p-2 border-2 habit-shadow-lg bg-habit-orange habit-btn">Logar</a>
+                <a href="{{ route('site.login') }}"
+                    class=" p-2 border-2 habit-shadow-lg bg-habit-orange habit-btn">Logar</a>
                 <a href="{{ route('site.register') }}"
                     class=" p-2 border-2 habit-shadow-lg bg-white habit-btn">Cadastrar</a>
             </div>

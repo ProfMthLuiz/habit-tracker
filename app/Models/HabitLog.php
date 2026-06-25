@@ -14,7 +14,7 @@ class HabitLog extends Model
     protected $fillable = [
         'user_id',
         'habit_id',
-        'name'
+        'completed_at'
     ];
 
     // Um registro (log) pertence a um usuário

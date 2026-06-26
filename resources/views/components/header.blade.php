@@ -1,6 +1,4 @@
 <header class="bg-white border-b-2  ">
-
-
     <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
         {{--  LOGO --}}
         <div class="flex items-center gap-2 font-bold">
@@ -8,10 +6,7 @@
             <p>Habit Tracker</p>
         </div>
 
-
-        {{-- GitHub --}}
-        <div>GITHUB
-
+        <div>
             @auth
                 <form class="inline " action="{{ route('auth.logout') }}" method="POST">
                     @csrf

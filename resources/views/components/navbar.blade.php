@@ -7,8 +7,8 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('habits.index') }}"
-                class="{{ Route::is('habits') ? 'font-bold underline' : '' }} text-md border-r-2 border-habit-orange pr-4 hover:underline">
+            <a href="{{ route('habits.history') }}"
+                class="{{ Route::is('habits.history') ? 'font-bold underline' : '' }} text-md border-r-2 border-habit-orange pr-4 hover:underline">
                 Histórico
             </a>
         </li>

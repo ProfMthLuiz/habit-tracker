@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Http\Requests\HabitRequest;
 use App\Models\Habit;
@@ -13,6 +14,7 @@ use Carbon\Carbon;
 
 class HabitController extends Controller
 {
+    use AuthorizesRequests;
 
     public function index(): View
     {
@@ -38,14 +40,14 @@ class HabitController extends Controller
 
     public function edit(Habit $habit): View
     {
+        $this->authorize('update', $habit);
+
         return view('habits.edit', compact('habit'));
     }
 
     public function update(HabitRequest $request, Habit $habit)
     {
-        if ($habit->user_id !== Auth::user()->id) {
-            abort(code: 403, message: 'Esse hábito não pertence a você.');
-        }
+        $this->authorize('update', $habit);
 
         $habit->update($request->all());
 
@@ -54,9 +56,7 @@ class HabitController extends Controller
 
     public function destroy(Habit $habit)
     {
-        if ($habit->user_id !== Auth::user()->id) {
-            abort(code: 403, message: 'Esse hábito não pertence a você.');
-        }
+        $this->authorize('delete', $habit);
 
         $habit->delete();
 
@@ -72,9 +72,7 @@ class HabitController extends Controller
 
     public function toggle(Habit $habit)
     {
-        if ($habit->user_id !== Auth::user()->id) {
-            abort(code: 403, message: 'Esse hábito não pertence a você.');
-        }
+        $this->authorize('toggle', $habit);
 
         $today = Carbon::today()->toDateString();
         $log = HabitLog::query()->where('habit_id', $habit->id)->where('completed_at', $today)->first();

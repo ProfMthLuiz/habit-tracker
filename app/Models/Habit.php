@@ -36,4 +36,35 @@ class Habit extends Model
             ->where('completed_at', Carbon::today()->toDateString())
             ->isNotEmpty();
     }
+
+    public function wasCompletedOn(Carbon $date): bool
+    {
+        return $this->habitLogs->where('completed_at', $date->toDateString())->isNotEmpty();
+    }
+
+    public static function generateYearGrid(int $year): array
+    {
+        $startDate = \Carbon\Carbon::create($year, 1, 1);
+        $endDate = \Carbon\Carbon::create($year, 12, 31);
+
+        $weeks = [];
+        $currentWeek = [];
+
+        $firstDayOfWeek = $startDate->dayOfWeek;
+        for ($i = 0; $i < $firstDayOfWeek; $i++) {
+            $currentWeek[] = null;
+        }
+
+        for ($date = $startDate->copy(); $date->lte($endDate); $date->addDay()) {
+            $currentWeek[] = $date->copy();
+
+            // Fecha a semana no sábado ou no último dia
+            if ($date->isSaturday() || $date->eq($endDate)) {
+                $weeks[] = $currentWeek;
+                $currentWeek = [];
+            }
+        }
+
+        return $weeks;
+    }
 }

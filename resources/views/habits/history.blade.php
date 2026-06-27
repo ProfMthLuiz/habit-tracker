@@ -1,6 +1,16 @@
 <x-layout>
     <main class="max-w-5xl mx-auto py-10 px-4">
         <x-navbar />
+
+        <div class="my-4">
+            @foreach ($avaliableYears as $y)
+                <a href="{{ route('habits.history', $y) }}"
+                    class="habit-btn habit-shadow-lg p-2 inline-block {{ $selectedYear == $y ? 'bg-habit-orange' : 'bg-white' }}">
+                    {{ $y }}
+                </a>
+            @endforeach
+        </div>
+
         <div>
             @forelse($habits as $habit)
                 <x-contribution :$habit :year="$selectedYear" />

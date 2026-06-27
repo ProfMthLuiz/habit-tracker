@@ -2,14 +2,6 @@
     <main class="max-w-5xl mx-auto py-10 px-4">
         <x-navbar />
 
-        @session('success')
-            <div class="flex">
-                <p class="bg-green-100 block border-2 border-green-400 text-green-700 px-4 py-3 mb-4">
-                    {{ session('success') }}
-                </p>
-            </div>
-        @endsession
-
         <div>
             <h2 class="text-lg mt-8 mb-2">
                 {{ date('d/m/Y') }}

@@ -15,11 +15,14 @@
     </title>
 </head>
 
-<body class="bg-[#FFEDD6] min-h-screen flex flex-col justify-between font-mono">
+<body class="bg-[#FFEDD6] min-h-screen flex flex-col justify-between font-mono relative">
     {{-- HEADER --}}
     <x-header />
+    <x-toast />
     {{ $slot }}
     <x-footer />
+
+    <script type="module" src="{{ Vite::asset('resources/js/app.js') }}"></script>
 </body>
 
 </html>

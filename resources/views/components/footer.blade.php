@@ -1,4 +1,4 @@
-<footer class="bg-white border-t-2 p-5">
+<footer class="bg-white border-t-2 p-5 text-center">
     <p>
         Criado por Matheus Luiz. O código-fonte está disponível no
         <a href="https://github.com/ProfMthLuiz/habit-tracker" target="_blank"

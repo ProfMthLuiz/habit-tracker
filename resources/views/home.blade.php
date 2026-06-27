@@ -1,12 +1,7 @@
 <x-layout>
-    <main class="py-10">
-        <h1>
+    <main class="max-w-5xl mx-auto py-10 px-4">
+        <h1 class="text-3xl text-center font-bold pt-20">
             Veja seus hábitos ganharem vida
         </h1>
-
-        @auth
-            {{-- @dd(auth()->user()) --}}
-            <p>Bem vindo(a), {{ auth()->user()->name }}</p>
-        @endauth
     </main>
 </x-layout>

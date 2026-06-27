@@ -15,7 +15,7 @@
     </title>
 </head>
 
-<body class="bg-[#FFEDD6] min-h-screen flex flex-col justify-between font-mono relative">
+<body class=" min-h-screen flex flex-col justify-between font-mono relative habit-bg">
     {{-- HEADER --}}
     <x-header />
     <x-toast />

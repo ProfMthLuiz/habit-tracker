@@ -43,11 +43,13 @@
 
 
 
-                <button type="submit" class="bg-white border-2 p-2">Cadastrar</button>
+                <button type="submit"
+                    class="bg-habit-orange p-2 habit-shadow-lg habit-btn transition duration-300 ease-in-out hover:bg-white">Cadastrar</button>
             </form>
 
             <p class="text-center mt-4">
-                Já tem uma conta? <a href="{{ route('site.login') }}" class="underline hover:opacity-50 transition">Faça
+                Já tem uma conta? <a href="{{ route('site.login') }}"
+                    class="underline transition duration-300 ease-in-out hover:opacity-50">Faça
                     login</a>
             </p>
         </section>

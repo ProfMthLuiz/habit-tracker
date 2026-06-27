@@ -25,7 +25,8 @@
 
 
 
-                <button type="submit" class="bg-habit-orange p-2 habit-shadow-lg habit-btn">Entrar</button>
+                <button type="submit"
+                    class="bg-habit-orange p-2 habit-shadow-lg habit-btn transition duration-300 ease-in-out hover:bg-white">Entrar</button>
             </form>
 
             <p class="text-center mt-4">

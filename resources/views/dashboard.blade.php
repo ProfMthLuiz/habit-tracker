@@ -1,13 +1,13 @@
 <x-layout>
-    <main class="max-w-5xl mx-auto py-10 px-4">
+    <main class="max-w-5xl mx-auto py-10 px-4 min-h-[80vh] w-full">
         <x-navbar />
 
-        <div>
-            <h2 class="text-lg mt-8 mb-2">
-                {{ date('d/m/Y') }}
+        <div class="flex flex-col gap-4 items-start">
+            <h2 class="text-lg mt-8 font-bold">
+                {{ \Carbon\Carbon::now()->locale('pt_BR')->translatedFormat('l, d \d\e F') }}
             </h2>
 
-            <ul class="flex flex-col gap-2">
+            <ul class="flex flex-col gap-2 w-full">
                 @forelse($habits as $habit)
                     <li class="habit-shadow-lg p-2 bg-[#ffdaac]">
                         <form action="{{ route('habits.toggle', $habit->id) }}" class="flex gap-2 items-center"
@@ -15,7 +15,8 @@
                             @csrf
                             <input type="checkbox" class="w-5 h-5" {{ $habit->wasCompletedToday() ? 'checked' : '' }}
                                 onchange="document.getElementById('form-{{ $habit->id }}').submit()">
-                            <p class="font-bold text-lg">
+                            <p
+                                class="font-bold text-lg {{ $habit->wasCompletedToday() ? 'line-through text-gray-600' : '' }}">
                                 {{ $habit->name }}
                             </p>
                         </form>
@@ -30,6 +31,9 @@
                     </a>
                 @endforelse
             </ul>
+
+            <a href="{{ route('habits.create') }}" class=" p-2 border-2 habit-shadow-lg bg-habit-orange habit-btn">+
+                Adicionar</a>
         </div>
     </main>
 </x-layout>

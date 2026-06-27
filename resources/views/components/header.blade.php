@@ -6,7 +6,7 @@
             <p>Habit Tracker</p>
         </div>
 
-        <div>
+        <div class="flex gap-2 items-center">
             @auth
                 <form class="inline " action="{{ route('auth.logout') }}" method="POST">
                     @csrf
@@ -23,6 +23,10 @@
                 </div>
 
             @endguest
+
+            <a class="habit-btn habit-shadow-lg p-2" href="#">
+                <x-icons.github />
+            </a>
         </div>
     </div>
 

@@ -95,8 +95,9 @@ class HabitController extends Controller
     public function history(?int $year = null): View
     {
         $selectedYear = $year ?? Carbon::now()->year;
-
-        $avaliableYears = range(2024, Carbon::now()->year);
+        $user = Auth::user();
+        $firstYear = $user->created_at->year;
+        $avaliableYears = range($firstYear, Carbon::now()->year);
 
         if (!in_array($selectedYear, $avaliableYears)) {
             abort(404, 'Ano inválido');
